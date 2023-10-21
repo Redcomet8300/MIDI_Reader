@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MIDI Player</title>
+  <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
+</head>
+<body>
+  <h1>MIDI Player by Redcomet</h1>
+  
+  <input type="file" id="midiFile" accept=".midi, .mid">
+  <p id="fileInfo"></p>
+  
+  <!-- Create a container for the MIDI player and visualizer -->
+  <section id="midiPlayerSection">
+    <h2>MIDI Player</h2>
+    <midi-player id="midiPlayer" sound-font visualizer="#midiVisualizer"></midi-player>
+    <midi-visualizer id="midiVisualizer"></midi-visualizer>
+  </section>
+  
+  <script>
+    // JavaScript code to handle MIDI file upload and playback
+    const midiFileInput = document.getElementById('midiFile');
+    const fileInfo = document.getElementById('fileInfo');
+    const midiPlayer = document.getElementById('midiPlayer');
+    
+    midiFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        // Update the file information
+        fileInfo.textContent = `Selected file: ${file.name}`;
+        
+        // Set the source of the MIDI player to the uploaded file
+        midiPlayer.src = URL.createObjectURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
