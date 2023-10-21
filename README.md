@@ -1,6 +1,5 @@
 # MIDI_Reader
 ## MIDI Reader by HTML and python
-===
 **How to use**
 ---
 > Setup
